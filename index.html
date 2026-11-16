@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ss 的小站 · bag.loc.cc</title>
+<meta name="description" content="ss 的小站 bag.loc.cc：Cora、Sara、Up、BOSS 四个入口，一个首页。">
+<style>
+  :root{
+    --primary:#2563EB; --secondary:#7C3AED; --accent:#EC4899;
+    --bg:#FFFFFF; --fg:#0F172A; --muted:#475569; --muted-bg:#F1F5FD; --border:#E4ECFC;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:"Chakra Petch",ui-sans-serif,system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 48px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+  .brand svg{width:32px;height:32px;flex:none}
+  .pill{font-size:12px;color:var(--muted);border:1px solid var(--border);background:var(--muted-bg);
+    padding:6px 10px;border-radius:999px;white-space:nowrap}
+  .hero{margin:56px 0 28px}
+  .hero h1{font-size:clamp(36px,7vw,56px);line-height:1.12;margin:0 0 12px;letter-spacing:-.01em}
+  .hero h1 .cora{color:var(--primary)} .hero h1 .sara{color:var(--secondary)}
+  .hero h1 .up{color:#059669} .hero h1 .boss{color:var(--accent)}
+  .hero p{color:var(--muted);font-size:17px;max-width:640px;margin:0}
+  .hero p b{color:var(--fg)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+  @media (max-width:640px){.grid{grid-template-columns:1fr}.hero{margin-top:36px}}
+  .card{display:block;text-decoration:none;border:1px solid var(--border);border-radius:16px;
+    padding:22px;background:#fff;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+  .card:hover,.card:focus-visible{transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,23,42,.10);border-color:var(--primary);outline:none}
+  .card:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+  .card .top{height:6px;border-radius:999px;margin-bottom:16px}
+  .cora .top{background:var(--primary)} .sara .top{background:var(--secondary)}
+  .up .top{background:#059669} .boss .top{background:var(--accent)}
+  .card h2{margin:0 0 6px;font-size:24px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .card .go{display:inline-block;margin-top:14px;font-weight:700;color:var(--primary)}
+  .card .go::after{content:" →"}
+  .note{margin-top:20px;color:var(--muted);font-size:13px}
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#2563EB" d="M16 16C10 4 2 6 4 13c1 5 7 6 12 3zm0 0c6-12 14-10 12-3-1 5-7 6-12 3z"/><path fill="#7C3AED" d="M16 17c-4 9-11 9-10 3 1-4 6-4 10-3zm0 0c4 9 11 9 10 3-1-4-6-4-10-3z"/></svg>
+      ss 的小站
+    </div>
+    <span class="pill">GitHub Pages · 打开即是首页</span>
+  </header>
+
+  <main class="hero">
+    <h1><span class="cora">Cora</span> · <span class="sara">Sara</span> · <span class="up">Up</span> · <span class="boss">BOSS</span></h1>
+    <p>四个入口，一个小站。<b>先让域名活下来</b>：这个页面轻、快、不用登录，点开就能看，证书由 GitHub Pages 自动发，刚好能过 Yunamo 的健康检查。</p>
+
+    <div class="grid">
+      <a class="card cora" href="#cora" id="cora">
+        <div class="top"></div>
+        <h2>Cora</h2>
+        <p>主站。X @CoraXaaa，热搜和日常都在这儿。</p>
+        <span class="go">进去看看</span>
+      </a>
+      <a class="card sara" href="#sara" id="sara">
+        <div class="top"></div>
+        <h2>Sara</h2>
+        <p>分站。这一格的内容等你填一行字就行。</p>
+        <span class="go">进去看看</span>
+      </a>
+      <a class="card up" href="#up" id="up">
+        <div class="top"></div>
+        <h2>Up</h2>
+        <p>分站。这一格的内容等你填一行字就行。</p>
+        <span class="go">进去看看</span>
+      </a>
+      <a class="card boss" href="#boss" id="boss">
+        <div class="top"></div>
+        <h2>BOSS</h2>
+        <p>分站。这一格的内容等你填一行字就行。</p>
+        <span class="go">进去看看</span>
+      </a>
+    </div>
+
+    <p class="note">想改卡片文案 / 链接，直接改 index.html 里对应的 &lt;h2&gt; 和 &lt;p&gt; 就行，不用动样式。域名换了的话，同步改 CNAME 文件里的那一行。</p>
+  </main>
+
+  <footer>
+    <span>Built for GitHub Pages</span>
+    <span>Cora · Sara · Up · BOSS</span>
+  </footer>
+</div>
+</body>
+</html>
