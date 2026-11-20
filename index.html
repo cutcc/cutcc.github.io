@@ -1,99 +1,152 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ss 的小站 · bag.loc.cc</title>
-<meta name="description" content="ss 的小站 bag.loc.cc：Cora、Sara、Up、BOSS 四个入口，一个首页。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bag · 包包分享 — bag.loc.cc</title>
+<meta name="description" content="Bag · 包包分享站，一只一只慢慢上架。">
 <style>
-  :root{
-    --primary:#2563EB; --secondary:#7C3AED; --accent:#EC4899;
-    --bg:#FFFFFF; --fg:#0F172A; --muted:#475569; --muted-bg:#F1F5FD; --border:#E4ECFC;
-  }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);
-    font-family:"Chakra Petch",ui-sans-serif,system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    font-size:16px;line-height:1.6}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#faf7f2;color:#221c16;line-height:1.6}
   a{color:inherit}
-  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 48px}
-  header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
-  .brand svg{width:32px;height:32px;flex:none}
-  .pill{font-size:12px;color:var(--muted);border:1px solid var(--border);background:var(--muted-bg);
-    padding:6px 10px;border-radius:999px;white-space:nowrap}
-  .hero{margin:56px 0 28px}
-  .hero h1{font-size:clamp(36px,7vw,56px);line-height:1.12;margin:0 0 12px;letter-spacing:-.01em}
-  .hero h1 .cora{color:var(--primary)} .hero h1 .sara{color:var(--secondary)}
-  .hero h1 .up{color:#059669} .hero h1 .boss{color:var(--accent)}
-  .hero p{color:var(--muted);font-size:17px;max-width:640px;margin:0}
-  .hero p b{color:var(--fg)}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
-  @media (max-width:640px){.grid{grid-template-columns:1fr}.hero{margin-top:36px}}
-  .card{display:block;text-decoration:none;border:1px solid var(--border);border-radius:16px;
-    padding:22px;background:#fff;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-  .card:hover,.card:focus-visible{transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,23,42,.10);border-color:var(--primary);outline:none}
-  .card:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
-  .card .top{height:6px;border-radius:999px;margin-bottom:16px}
-  .cora .top{background:var(--primary)} .sara .top{background:var(--secondary)}
-  .up .top{background:#059669} .boss .top{background:var(--accent)}
-  .card h2{margin:0 0 6px;font-size:24px}
-  .card p{margin:0;color:var(--muted);font-size:15px}
-  .card .go{display:inline-block;margin-top:14px;font-weight:700;color:var(--primary)}
-  .card .go::after{content:" →"}
-  .note{margin-top:20px;color:var(--muted);font-size:13px}
-  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px 48px}
+  header{padding:18px 0 8px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  header h1{font-size:18px;margin:0;letter-spacing:.06em}
+  header h1 span{font-weight:400;color:#8a7d6d;font-size:13px;margin-left:8px;letter-spacing:0}
+  header .domain{font-size:12px;color:#8a7d6d;white-space:nowrap}
+  .sub{font-size:13px;color:#6b5f52;margin:2px 0 16px}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}
+  .toolbar input{flex:1;min-width:180px;padding:10px 12px;border:1px solid #e3d9cc;border-radius:999px;background:#fff;font-size:14px;outline:none}
+  .toolbar input:focus{border-color:#221c16}
+  .count{font-size:13px;color:#8a7d6d;white-space:nowrap}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+  .pill{border:1px solid #e3d9cc;background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+  .pill.active{background:#221c16;color:#fff;border-color:#221c16}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:380px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid #eee3d6;border-radius:14px;overflow:hidden}
+  .thumb{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#f3ede4;color:#b8a88f;font-size:44px}
+  .thumb.dashed{background:#faf7f2;border-bottom:1px dashed #e3d9cc}
+  .body{padding:12px}
+  .body h3{margin:0 0 4px;font-size:15px}
+  .body p{margin:0;font-size:13px;color:#6b5f52}
+  .tag{display:inline-block;font-size:11px;background:#f3ede4;border-radius:999px;padding:2px 8px;margin-top:8px;color:#6b5f52}
+  .empty{grid-column:1/-1;background:#fff;border:1px dashed #d9cbb8;border-radius:14px;padding:28px 18px;text-align:center}
+  .empty h2{margin:0 0 6px;font-size:17px}
+  .empty p{margin:0;color:#6b5f52;font-size:14px}
+  .how{margin-top:28px;background:#221c16;color:#f5efe6;border-radius:16px;padding:18px}
+  .how h2{margin:0 0 10px;font-size:16px}
+  .how ol{margin:0;padding-left:20px;font-size:14px}
+  .how li{margin:6px 0}
+  .how code{background:#3a322a;padding:1px 6px;border-radius:6px}
+  footer{margin-top:28px;font-size:12px;color:#a08f7d;text-align:center}
+  .hidden{display:none!important}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="brand">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#2563EB" d="M16 16C10 4 2 6 4 13c1 5 7 6 12 3zm0 0c6-12 14-10 12-3-1 5-7 6-12 3z"/><path fill="#7C3AED" d="M16 17c-4 9-11 9-10 3 1-4 6-4 10-3zm0 0c4 9 11 9 10 3-1-4-6-4-10-3z"/></svg>
-      ss 的小站
-    </div>
-    <span class="pill">GitHub Pages · 打开即是首页</span>
+    <h1>Bag · 包包分享<span>一只一只，慢慢分享</span></h1>
+    <div class="domain">bag.loc.cc</div>
   </header>
+  <p class="sub">这里是 ss 的包包分享站。没有凑数的包，只有发来一张、就上架一张的包。</p>
 
-  <main class="hero">
-    <h1><span class="cora">Cora</span> · <span class="sara">Sara</span> · <span class="up">Up</span> · <span class="boss">BOSS</span></h1>
-    <p>四个入口，一个小站。<b>先让域名活下来</b>：这个页面轻、快、不用登录，点开就能看，证书由 GitHub Pages 自动发，刚好能过 Yunamo 的健康检查。</p>
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="搜包包名字、品牌…" aria-label="搜索包包">
+    <span class="count" id="count">共 0 只包包</span>
+  </div>
 
-    <div class="grid">
-      <a class="card cora" href="#cora" id="cora">
-        <div class="top"></div>
-        <h2>Cora</h2>
-        <p>主站。X @CoraXaaa，热搜和日常都在这儿。</p>
-        <span class="go">进去看看</span>
-      </a>
-      <a class="card sara" href="#sara" id="sara">
-        <div class="top"></div>
-        <h2>Sara</h2>
-        <p>分站。这一格的内容等你填一行字就行。</p>
-        <span class="go">进去看看</span>
-      </a>
-      <a class="card up" href="#up" id="up">
-        <div class="top"></div>
-        <h2>Up</h2>
-        <p>分站。这一格的内容等你填一行字就行。</p>
-        <span class="go">进去看看</span>
-      </a>
-      <a class="card boss" href="#boss" id="boss">
-        <div class="top"></div>
-        <h2>BOSS</h2>
-        <p>分站。这一格的内容等你填一行字就行。</p>
-        <span class="go">进去看看</span>
-      </a>
-    </div>
+  <div class="pills" id="pills">
+    <button class="pill active" data-cat="全部">全部</button>
+    <button class="pill" data-cat="手提包">手提包</button>
+    <button class="pill" data-cat="斜挎包">斜挎包</button>
+    <button class="pill" data-cat="肩背包">肩背包</button>
+    <button class="pill" data-cat="托特包">托特包</button>
+    <button class="pill" data-cat="双肩包">双肩包</button>
+    <button class="pill" data-cat="钱包 / 小皮具">钱包 / 小皮具</button>
+  </div>
 
-    <p class="note">想改卡片文案 / 链接，直接改 index.html 里对应的 &lt;h2&gt; 和 &lt;p&gt; 就行，不用动样式。域名换了的话，同步改 CNAME 文件里的那一行。</p>
-  </main>
+  <div class="grid" id="grid"></div>
 
-  <footer>
-    <span>Built for GitHub Pages</span>
-    <span>Cora · Sara · Up · BOSS</span>
-  </footer>
+  <section class="how">
+    <h2>怎么上架一只包？</h2>
+    <ol>
+      <li>发一张包的照片给 Muse，也可以顺便说一句名字、品牌或一句心得。</li>
+      <li>告诉我它属于哪个分类：手提 / 斜挎 / 肩背 / 托特 / 双肩 / 钱包小皮具。</li>
+      <li>我帮你排版上架，bag.loc.cc 上就能点开看了。</li>
+    </ol>
+    <p style="font-size:13px;opacity:.85;margin:12px 0 0">以后加包不用重做整站：在页面里的 <code>BAGS</code> 列表加一条就行，搜索和分类会自动跟上。</p>
+  </section>
+
+  <footer>bag.loc.cc · Bag 包包分享 · 空架子已搭好，等第一只包来</footer>
 </div>
+
+<script>
+/*
+  上架数据在这里加，一只包一条。
+  模板（不要删，照着填）：
+  {
+    name: "包包名字",
+    brand: "品牌",
+    cat: "手提包", // 手提包 / 斜挎包 / 肩背包 / 托特包 / 双肩包 / 钱包 / 小皮具
+    note: "一句分享",
+    img: "图片地址",
+    link: "" // 有购买/参考链接再填，没有留空
+  }
+  现在是空架子：下面是空数组，不放任何假包。
+*/
+const BAGS = [];
+
+let activeCat = "全部";
+const grid = document.getElementById("grid");
+const countEl = document.getElementById("count");
+const qEl = document.getElementById("q");
+
+function render() {
+  const q = (qEl.value || "").trim().toLowerCase();
+  const list = BAGS.filter(b =>
+    (activeCat === "全部" || b.cat === activeCat) &&
+    (!q || (b.name + " " + (b.brand || "") + " " + (b.note || "")).toLowerCase().includes(q))
+  );
+  countEl.textContent = "共 " + list.length + " 只包包";
+  grid.innerHTML = "";
+  if (list.length === 0) {
+    grid.innerHTML = `
+      <div class="empty">
+        <h2>这里还空着，等第一只包来 ✨</h2>
+        <p>发一张包的照片给我，我就帮你上架在这里。<br>分类和搜索已经做好了，有包就能直接用。</p>
+      </div>
+      <div class="card"><div class="thumb dashed">＋</div><div class="body"><h3>待上架</h3><p>第一只包的位置留给你</p><span class="tag">发照片即可上架</span></div></div>
+      <div class="card"><div class="thumb dashed">＋</div><div class="body"><h3>待上架</h3><p>第二只包的位置留给你</p><span class="tag">发照片即可上架</span></div></div>
+      <div class="card"><div class="thumb dashed">＋</div><div class="body"><h3>待上架</h3><p>第三只包的位置留给你</p><span class="tag">发照片即可上架</span></div></div>`;
+    return;
+  }
+  list.forEach(b => {
+    const el = document.createElement("article");
+    el.className = "card";
+    el.innerHTML = `
+      <div class="thumb">${b.img ? `<img src="${b.img}" alt="${b.name}" style="width:100%;height:100%;object-fit:cover">` : "👜"}</div>
+      <div class="body"><h3>${b.name}</h3><p>${b.brand ? b.brand + " · " : ""}${b.note || ""}</p><span class="tag">${b.cat}</span></div>`;
+    if (b.link) {
+      const a = document.createElement("a");
+      a.href = b.link; a.target = "_blank"; a.rel = "noopener";
+      a.appendChild(el); grid.appendChild(a);
+    } else {
+      grid.appendChild(el);
+    }
+  });
+}
+document.getElementById("pills").addEventListener("click", e => {
+  const btn = e.target.closest(".pill");
+  if (!btn) return;
+  document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  activeCat = btn.dataset.cat;
+  render();
+});
+qEl.addEventListener("input", render);
+render();
+</script>
 </body>
 </html>
